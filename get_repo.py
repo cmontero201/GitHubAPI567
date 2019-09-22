@@ -6,6 +6,7 @@ This makes data requests from GitHub API
 
 """
 import requests
+# import pip._vendor.requests as requests
 import json
 
 def connect(user):
@@ -15,7 +16,6 @@ def connect(user):
 
     ## Get User
     repo_page = requests.get(repo_url % user)
-    print(repo_page.status_code)
     if repo_page.status_code == 200:
         repo_data = repo_page.json()
         ## Parse Repositories
@@ -27,7 +27,7 @@ def connect(user):
                 commit_data = commit_page.json()
                 print("Repo: ", repo_name, "   Commits: ", len(commit_data))
             else:
-                print("No Connection: Line 29")
+                print("No Connection: Line 26")
                 code200 = False
     else:
         print("No Connection: Line 18")
