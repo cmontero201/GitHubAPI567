@@ -38,6 +38,11 @@ def connect(user):
 ## Run Program
 def run():
     user = input("Please enter a GitHub user ID: ")
+    try:
+        connect(user)
+    except(AttributeError):
+        print("Unable to find an acount with that username")
+
     
     connect(user)
 
