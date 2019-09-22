@@ -5,7 +5,7 @@ August 29, 2019
 This makes data requests from GitHub API
 
 """
-import pip._vendor.requests as requests
+import requests
 import json
 
 def connect(user):
