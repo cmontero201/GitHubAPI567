@@ -43,9 +43,6 @@ def run():
     except(AttributeError):
         print("Unable to find an acount with that username")
 
-    
-    connect(user)
-
 
 if __name__ == '__main__':
     run()
