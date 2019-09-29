@@ -13,6 +13,7 @@ def connect(user):
     code200 = True
     repo_url = "https://api.github.com/users/%s/repos" ## % (userid)
     commit_url = "https://api.github.com/repos/%s/%s/commits" ## % (id, repo)
+    repos = {}
 
     ## Get User
     repo_page = requests.get(repo_url % user)
@@ -25,6 +26,7 @@ def connect(user):
             commit_page = requests.get(commit_url % (user, repo_name))
             if commit_page.status_code == 200:
                 commit_data = commit_page.json()
+                repos[repo_name] = commit_data
                 print("Repo: ", repo_name, "   Commits: ", len(commit_data))
             else:
                 print("No Connection: Line 26")
@@ -33,7 +35,7 @@ def connect(user):
         print("No Connection: Line 18")
         code200 = False
         
-    return code200
+    return [code200, repos]
 
 ## Run Program
 def run():
